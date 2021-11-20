@@ -26,8 +26,7 @@ public class RequestParamController {
         response.getWriter().write("ok");
     }
 
-//  @ResponseBody는 @RestController(@ResponseBody + @Controller)
-//  와 비슷하게 그냥 문자 그대로를 화면에 리턴한다.
+//  @ResponseBody는 @RestController(@ResponseBody + @Controller)와 비슷하게 그냥 문자 그대로를 화면에 리턴한다.
     @ResponseBody
     @RequestMapping("/request-param-v2")
     public String requestParamV2(

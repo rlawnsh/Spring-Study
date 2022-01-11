@@ -1,6 +1,7 @@
 package hellojpa;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
@@ -14,9 +15,13 @@ public class Member {
     @Column(name = "USERNAME")
     private String userName;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "TEAM_ID")
-    private Team team;
+    // 기간
+    @Embedded
+    private Period period;
+
+    // 주소
+    @Embedded
+    private Address address;
 
     public Long getId() {
         return id;
@@ -34,5 +39,19 @@ public class Member {
         this.userName = userName;
     }
 
+    public Period getPeriod() {
+        return period;
+    }
 
+    public void setPeriod(Period period) {
+        this.period = period;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
 }

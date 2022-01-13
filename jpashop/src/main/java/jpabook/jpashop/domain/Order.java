@@ -22,10 +22,14 @@ public class Order {
     @Column(name = "order_id")
     private Long id;
 
+    // 일대다 관계에서 FK가 있는 테이블 쪽이 다 관계가 된다.
+    // FK(member_id)가 있는 쪽이 연관관계의 주인이다. -> JoinColumn (PK가 있는 쪽은 mappedBy)
+    // @XToOne 은 기본이 FetchType.EAGER 이기 때문에 LAZY 로 설정해야 한다.
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id")
     private Member member;
 
+    // cascade 를 활용하면 Order 가 persist 될 때 연관된 것들도 다 함께 persist 된다.
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
     private List<OrderItem> orderItems = new ArrayList<>();
 

@@ -10,7 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
-@Transactional(readOnly = true)
+@Transactional(readOnly = true) // for DB(ex. LAZY)
 @RequiredArgsConstructor // final 필드 생성자 주입
 public class MemberService {
 

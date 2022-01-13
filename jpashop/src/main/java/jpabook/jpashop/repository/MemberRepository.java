@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 import javax.persistence.EntityManager;
 import java.util.List;
 
+// DAO class에서 쓰인다, Database에 접근하는 method를 가지고 있는 class에서 쓰인다.
 @Repository
 @RequiredArgsConstructor
 public class MemberRepository {

@@ -21,6 +21,7 @@ public class Delivery {
     @Embedded
     private Address address;
 
+    // 문자로 넣어주기 위해 @Enumerated(EnumType.STRING)
     @Enumerated(EnumType.STRING)
     private DeliveryStatus status;
 }

@@ -12,9 +12,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import static org.junit.Assert.*;
 
+// @RunWith 과 @SpringBootTest 이 있어야 스프링 부트를 띄운 상태에서 스프링, JPA,  DB 까지 돌면서 테스트 가능
 @RunWith(SpringRunner.class)
 @SpringBootTest
-@Transactional
+@Transactional // 테스트 끝난 다음에 롤백하는 기능, but (@Rollback(false))로 db에 데이터 주입 가능
 public class MemberServiceTest {
 
     @Autowired
@@ -35,6 +36,7 @@ public class MemberServiceTest {
         assertEquals(member, memberRepository.findOne(saveId));
     }
 
+//     try - catch 구문 대신 expected 활용
     @Test(expected = IllegalStateException.class)
     public void 중복_회원_예외() throws Exception {
         //given

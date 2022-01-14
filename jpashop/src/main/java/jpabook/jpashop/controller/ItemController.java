@@ -62,18 +62,28 @@ public class ItemController {
     }
 
     @PostMapping("items/{itemId}/edit")
-    public String updateItem(@ModelAttribute("form") BookForm form) {
+    public String updateItem(@PathVariable Long itemId ,@ModelAttribute("form") BookForm form) {
 
-        Book book = new Book();
-        book.setId(form.getId());
-        book.setName(form.getName());
-        book.setPrice(form.getPrice());
-        book.setStockQuantity(form.getStockQuantity());
-        book.setAuthor(form.getAuthor());
-        book.setIsbn(form.getIsbn());
+/**
+ * new Book() 준영속 엔티티 - JPA 가 관리 하지 않음
+ *          준영속 엔티티를 수정하는 2가지 방법
+ *          - 변경 감지 기능 사용 (Dirty checking)
+ *          - 병합(merge) 사용
+ *         주의 : 변경 감지 기능을 사용하면 원하는 속성만 선택해서 변경할 수 있지만,
+ *         병합을 사용하면 모든 속성이 변경된다. 병합시 값이 없으면 null 로 업데이트 할 위험도 있다.(병합은 모든 필드를 교체한다.)
+ */
+//        Book book = new Book();
+//        book.setId(form.getId());
+//        book.setName(form.getName());
+//        book.setPrice(form.getPrice());
+//        book.setStockQuantity(form.getStockQuantity());
+//        book.setAuthor(form.getAuthor());
+//        book.setIsbn(form.getIsbn());
+//        itemService.saveItem(book);
 
-        itemService.saveItem(book);
-
+        // 변경 감지 기능 사용
+        itemService.updateItem(itemId, form.getName(), form.getPrice(), form.getStockQuantity());
+        
         return "redirect:/items";
     }
 }

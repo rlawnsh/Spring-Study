@@ -11,6 +11,7 @@ import javax.persistence.*;
 @Entity
 @Getter
 @Setter
+// 기본 생성자로 객체 생성 불가능
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class OrderItem {
 

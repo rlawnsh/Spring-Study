@@ -14,6 +14,7 @@ import java.util.List;
 @Table(name = "orders")
 @Getter
 @Setter
+// 기본 생성자로 객체 생성 불가능
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Order {
 

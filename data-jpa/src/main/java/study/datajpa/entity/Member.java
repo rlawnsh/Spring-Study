@@ -10,6 +10,11 @@ import javax.persistence.*;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 // 가급적이면 연관관계 필드는 @ToString 에서 제외시켜줘야 한다.
 @ToString(of = {"id", "username", "age"})
+@NamedQuery(
+        name = "Member.findByUsername",
+        query = "select m from Member m where m.username = :username"
+)
+// @NamedQuery - 애플리케이션 로딩 시점에 오류를 잡을 수 있음
 public class Member {
 
     @Id
@@ -33,6 +38,11 @@ public class Member {
         if (team != null) {
             changeTeam(team);
         }
+    }
+
+    public Member(String username, int age) {
+        this.username = username;
+        this.age = age;
     }
 
     // 양방향 연관관계 주의

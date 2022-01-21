@@ -15,7 +15,7 @@ import javax.persistence.*;
         query = "select m from Member m where m.username = :username"
 )
 // @NamedQuery - 애플리케이션 로딩 시점에 오류를 잡을 수 있음
-public class Member {
+public class Member extends BaseEntity{
 
     @Id
     @GeneratedValue

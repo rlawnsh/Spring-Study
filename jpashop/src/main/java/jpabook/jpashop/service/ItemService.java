@@ -21,7 +21,7 @@ public class ItemService {
         itemRepository.save(item);
     }
 
-    // 변경 감지 기능 사용
+    // #TODO 변경 감지 기능 사용
     // 트랜잭션이 있는 서비스 계층에서 영속 상태의 엔티티를 조회하고, 엔티티의 데이터를 직접 변경
     // 트랜잭션 커밋 시점에 변경 감지가 실행 됨
     @Transactional
